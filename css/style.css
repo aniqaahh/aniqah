@@ -103,7 +103,8 @@ textarea {
     top: calc(100% + 1.5rem);
     height: 5px;
     width: 3rem;
-    background: #0062b9;
+    /* 🌲 SDG 15 Green Line Indicator */
+    background: #2e7d32; 
     left: 50%;
     transform: translateX(-50%);
     border-radius: 5px; }
@@ -155,12 +156,14 @@ textarea {
     padding: 1.5rem 5rem;
     font-size: 1.6rem; }
   .btn--theme {
-    background: #0062b9;
+    /* 🌲 SDG 15 Green Button Background */
+    background: #2e7d32; 
     color: #fff; }
   .btn--theme-inv {
-    color: #0062b9;
+    /* 🌲 SDG 15 Green Outlined Button */
+    color: #2e7d32; 
     background: #fff;
-    border: 2px solid #0062b9;
+    border: 2px solid #2e7d32; 
     box-shadow: none;
     padding: calc(1.5rem - 2px) calc(5rem - 2px); }
 
@@ -185,7 +188,8 @@ textarea {
 
 .home-hero {
   color: #fff;
-  background: linear-gradient(to right, rgba(0, 98, 185, 0.8), rgba(0, 98, 185, 0.8)), url(../../assets/svg/common-bg.svg);
+  /* 🌲 SDG 15 Green Gradient Layer for Hero Banner (Nampak refreshing!) */
+  background: linear-gradient(to right, rgba(27, 94, 32, 0.85), rgba(46, 125, 50, 0.85)), url(../../assets/svg/common-bg.svg);
   background-position: center;
   height: 100vh;
   min-height: 80rem;
@@ -323,7 +327,8 @@ textarea {
           font-size: 1.7rem; } }
 
 .contact {
-  background: linear-gradient(to right, rgba(0, 98, 185, 0.8), rgba(0, 98, 185, 0.8)), url(../../assets/svg/common-bg.svg);
+  /* 🌲 SDG 15 Green Gradient Overlay for Contact Form Background */
+  background: linear-gradient(to right, rgba(27, 94, 32, 0.85), rgba(46, 125, 50, 0.85)), url(../../assets/svg/common-bg.svg);
   background-size: cover;
   background-position: center; }
   .contact__form-container {
@@ -361,13 +366,7 @@ textarea {
     letter-spacing: 0px;
     background: #f0f0f0;
     border-radius: 5px;
-    font-weight: 600;
-    /* Code for Modern Browsers */
-    /* Code for WebKit, Blink, Edge */
-    /* Code for Internet Explorer 10-11 */
-    /* Code for Microsoft Edge */
-    /* Code for Mozilla Firefox 4 to 18 */
-    /* Code for Mozilla Firefox 19+ */ }
+    font-weight: 600; }
     .contact__form-input::placeholder {
       color: #999;
       font-weight: 600;
@@ -404,7 +403,8 @@ textarea {
 
 .project-cs-hero {
   color: #fff;
-  background: linear-gradient(to right, rgba(0, 98, 185, 0.8), rgba(0, 98, 185, 0.8)), url(../../assets/svg/common-bg.svg);
+  /* 🌲 SDG 15 Green Gradient Overlay Case Study Hero Banner */
+  background: linear-gradient(to right, rgba(27, 94, 32, 0.85), rgba(46, 125, 50, 0.85)), url(../../assets/svg/common-bg.svg);
   background-size: cover;
   background-position: center;
   position: relative; }
@@ -497,7 +497,6 @@ textarea {
   position: fixed;
   width: 100%;
   z-index: 1000;
-  background: #000;
   background: #fff;
   box-shadow: 0 10px 100px rgba(0, 0, 0, 0.1); }
   .header__content {
@@ -515,14 +514,16 @@ textarea {
     color: #333;
     transition: color .3s; }
     .header__logo-container:hover {
-      color: #0062b9; }
+      /* 🌲 SDG 15 Green Logo Hover Text */
+      color: #2e7d32; }
   .header__logo-img-cont {
     width: 5rem;
     height: 5rem;
     border-radius: 50px;
     overflow: hidden;
     margin-right: 1.5rem;
-    background: #0062b9; }
+    /* 🌲 SDG 15 Green Logo Background Frame */
+    background: #2e7d32; }
     @media only screen and (max-width: 56.25em) {
       .header__logo-img-cont {
         width: 4.5rem;
@@ -554,7 +555,8 @@ textarea {
     font-weight: 700;
     transition: color .3s; }
     .header__link:hover {
-      color: #0062b9; }
+      /* 🌲 SDG 15 Green Navbar Link Hover Text */
+      color: #2e7d32; }
     @media only screen and (max-width: 56.25em) {
       .header__link {
         padding: 3rem 1.8rem;
@@ -578,9 +580,7 @@ textarea {
     visibility: hidden;
     opacity: 0;
     transition: all .3s;
-    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
-    -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1); }
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1); }
     .header__sm-menu--active {
       visibility: hidden;
       opacity: 0; }
@@ -601,7 +601,8 @@ textarea {
     letter-spacing: 2px;
     transition: color .3s; }
     .header__sm-menu-link a:hover {
-      color: #0062b9; }
+      /* 🌲 SDG 15 Green Mobile Menu Hover Text */
+      color: #2e7d32; }
   .header__sm-menu-link:first-child a {
     border-top: 1px solid #eee; }
   .header__sm-menu-link-last {
@@ -649,12 +650,13 @@ textarea {
     border-top: 1px solid #444;
     color: #eee;
     font-size: 1.2rem;
-    text-align: left;
     text-align: center; }
     .main-footer__lower a {
       text-decoration: underline;
       font-weight: bold;
-      margin-left: 2px; }
+      margin-left: 2px;
+      /* 🌲 Eco Link Highlights on Footer */
+      color: #4caf50; } 
     @media only screen and (max-width: 56.25em) {
       .main-footer__lower {
         padding: 3.5rem 0; } }
