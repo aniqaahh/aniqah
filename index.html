@@ -7,43 +7,368 @@
     <title>Aniqah | Mobile Development Academic e-Portfolio</title>
     <meta name="description" content="Academic e-Portfolio and VSR Dashboard for Android Mobile Application Development." />
 
-    <link rel="stylesheet" href="css/style.css" />
-
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght=400;600;700;900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Pure Integrated Modern CSS Stylesheet (Aesthetic Eco-Theme for SDG 15) -->
+    <style>
+      :root {
+        --primary: #15803d;      /* Deep Forest Green */
+        --primary-light: #bbf7d0;/* Soft Mint Green */
+        --primary-dark: #166534; /* Dark Moss Green */
+        --secondary: #0f172a;   /* Deep Slate */
+        --text-main: #334155;   /* Charcoal text */
+        --text-muted: #64748b;  /* Slate gray */
+        --bg-light: #f8fafc;    /* Soft off-white */
+        --bg-white: #ffffff;
+        --shadow-sm: 0 2px 8px rgba(21, 128, 61, 0.05);
+        --shadow-md: 0 10px 30px rgba(15, 23, 42, 0.08);
+        --shadow-lg: 0 20px 40px rgba(21, 128, 61, 0.12);
+        --radius: 16px;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 62.5%;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 1.6rem;
+        line-height: 1.7;
+        color: --text-main;
+        background-color: var(--bg-light);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      ul { list-style: none; }
+      a { text-style: none; text-decoration: none; color: inherit; transition: var(--transition); }
+
+      /* Common Utilities */
+      .sec-pad { padding: 10rem 0; }
+      .main-container { max-width: 120rem; margin: 0 auto; padding: 0 3rem; }
+      
+      .heading-sec { text-align: center; margin-bottom: 6rem; }
+      .heading-sec__main { font-size: 3.6rem; font-weight: 800; color: var(--secondary); display: block; margin-bottom: 1.5rem; letter-spacing: -0.5px; }
+      .heading-sec__sub { font-size: 1.8rem; color: var(--text-muted); max-width: 70rem; margin: 0 auto; font-weight: 400; }
+
+      /* Sticky Navigation Header */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        z-index: 1000;
+        box-shadow: var(--shadow-sm);
+        border-bottom: 1px solid rgba(241, 245, 249, 0.8);
+      }
+
+      .header__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 4rem;
+        max-width: 140rem;
+        margin: 0 auto;
+      }
+
+      .header__logo-container {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .header__logo-img-cont {
+        width: 4.5rem;
+        height: 4.5rem;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid var(--primary);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .header__logo-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .header__logo-sub {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--secondary);
+        letter-spacing: 0.5px;
+      }
+
+      .header__links {
+        display: flex;
+        gap: 3rem;
+      }
+
+      .header__link {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--text-main);
+        padding: 0.8rem 1.6rem;
+        border-radius: 8px;
+      }
+
+      .header__link:hover, .header__link--active {
+        color: var(--primary);
+        background: rgba(21, 128, 61, 0.08);
+      }
+
+      /* Premium Hero Area */
+      .home-hero {
+        min-height: 90vh;
+        background: radial-gradient(circle at 80% 20%, rgba(220, 252, 231, 0.6) 0%, rgba(248, 250, 252, 1) 100%);
+        display: flex;
+        align-items: center;
+        padding-top: 10rem;
+      }
+
+      .home-hero__content {
+        max-width: 90rem;
+        margin: 0 auto;
+        text-align: center;
+        padding: 0 3rem;
+      }
+
+      .heading-primary {
+        font-size: 5.6rem;
+        font-weight: 800;
+        color: var(--secondary);
+        line-height: 1.15;
+        margin-bottom: 3rem;
+        letter-spacing: -1.5px;
+      }
+
+      .text-primary {
+        font-size: 2rem;
+        color: var(--text-main);
+        line-height: 1.8;
+        margin-bottom: 4rem;
+      }
+
+      /* Modern Button Engine */
+      .btn {
+        display: inline-block;
+        padding: 1.5rem 4rem;
+        font-size: 1.6rem;
+        font-weight: 700;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-md);
+        cursor: pointer;
+      }
+
+      .btn--bg {
+        background: var(--primary);
+        color: var(--bg-white);
+      }
+
+      .btn--bg:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .btn--med {
+        padding: 1.2rem 2.5rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+        border-radius: 10px;
+        background: var(--primary);
+        color: var(--bg-white);
+        box-shadow: none;
+      }
+
+      .btn--med:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+      }
+
+      /* Profiles & SDG Section Layout */
+      .about__content {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 6rem;
+        align-items: start;
+      }
+
+      .about__content-main {
+        background: var(--bg-white);
+        padding: 4rem;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-sm);
+        border: 1px solid rgba(241, 245, 249, 1);
+      }
+
+      .about__content-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--secondary);
+        margin-bottom: 2.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .about__content-details p {
+        margin-bottom: 1.5rem;
+        font-size: 1.6rem;
+      }
+
+      .sdg-badge-container {
+        margin-top: 3rem;
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        padding: 2.5rem;
+        border-left: 6px solid var(--primary);
+        border-radius: 0 var(--radius) var(--radius) 0;
+      }
+
+      /* Core Tech Stack Section */
+      .about__content-skills {
+        background: var(--bg-white);
+        padding: 4rem;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-sm);
+        border: 1px solid rgba(241, 245, 249, 1);
+      }
+
+      .skills { display: flex; flex-wrap: wrap; gap: 1.2rem; }
+      .skills__skill {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--primary-dark);
+        background: rgba(21, 128, 61, 0.08);
+        padding: 1rem 2rem;
+        border-radius: 100px;
+        border: 1px solid rgba(21, 128, 61, 0.15);
+      }
+
+      /* Aesthetic Grid Content Rows for Labs & Projects */
+      .projects__content { display: flex; flex-direction: column; gap: 6rem; }
+      .projects__row {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 5rem;
+        background: var(--bg-white);
+        padding: 3.5rem;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-sm);
+        align-items: center;
+        border: 1px solid rgba(241, 245, 249, 1);
+        transition: var(--transition);
+      }
+
+      .projects__row:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .projects__row-img-cont {
+        position: relative;
+        padding-bottom: 56.25%; /* Perfect 16:9 HD Aspect Ratio Box */
+        height: 0;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: var(--shadow-md);
+        background: #000;
+      }
+
+      .projects__row-img-cont iframe {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%; border: 0;
+      }
+
+      .projects__row-content-title { font-size: 2.4rem; font-weight: 700; color: var(--secondary); margin-bottom: 2rem; }
+      .projects__row-content-desc { font-size: 1.5rem; color: var(--text-main); line-height: 1.7; }
+      
+      .project-button-group { display: flex; gap: 1.5rem; margin-top: 2.5rem; flex-wrap: wrap; }
+
+      /* Premium Journey Journey Banner Structure */
+      .reflection-banner {
+        background: linear-gradient(135deg, #134e4a 0%, #064e3b 50%, #022c22 100%);
+        color: var(--bg-white);
+      }
+      
+      .reflection-box { max-width: 90rem; margin: 0 auto; display: flex; flex-direction: column; gap: 3.5rem; }
+      .reflection-card {
+        background: rgba(255, 255, 255, 0.06);
+        padding: 3rem;
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(5px);
+      }
+      .reflection-card h4 { font-size: 1.9rem; font-weight: 700; color: var(--primary-light); margin-bottom: 1rem; }
+      .reflection-card p { font-size: 1.6rem; color: rgba(241, 245, 249, 0.9); text-align: justify; }
+
+      /* Premium Component Data Reference Table */
+      .table-wrapper { overflow-x: auto; border-radius: var(--radius); box-shadow: var(--shadow-md); border: 1px solid rgba(241, 245, 249, 1); background-color: var(--bg-white); }
+      .resource-table { width: 100%; border-collapse: collapse; font-size: 1.5rem; text-align: left; }
+      .resource-table th { background: var(--secondary); color: var(--bg-white); padding: 1.8rem; font-weight: 600; }
+      .resource-table td { padding: 1.8rem; border-bottom: 1px solid #f1f5f9; color: var(--text-main); }
+      .resource-table tr:last-child td { border-bottom: none; }
+      .resource-table tr:nth-child(even) { background-color: #f8fafc; }
+
+      /* Elegant Global Footer Layout */
+      .main-footer { background: var(--secondary); color: rgba(241, 245, 249, 0.6); padding: 5rem 0; font-size: 1.4rem; border-top: 1px solid rgba(255,255,255,0.05); }
+      .main-footer__content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; }
+      .main-footer__credit { font-weight: 500; }
+
+      /* Responsive Layout Engine breaking down below 900px screens */
+      @media (max-width: 56.25em) {
+        .about__content, .projects__row { grid-template-columns: 1fr; gap: 4rem; }
+        .header__links { display: none; } /* Simplified minimal header parameters for clean look */
+        .heading-primary { font-size: 4rem; }
+        .main-footer__content { flex-direction: column; text-align: center; }
+      }
+    </style>
   </head>
   <body>
+    
+    <!-- 🎛️ STICKY NAVIGATION BAR (Requirement: Anchors Integrated) -->
     <header class="header">
       <div class="header__content">
         <div class="header__logo-container">
           <div class="header__logo-img-cont">
-            <img src="./assets/png/picu.png" alt="Aniqah Profile Image" class="header__logo-img" />
+            <img src="./assets/png/picu.png" alt="Aniqah Profile Image" class="header__logo-img" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80'" />
           </div>
-          <span class="header__logo-sub">NUR ANIQAH BINTI HAMIZAN |A212764</span>
+          <span class="header__logo-sub">NUR ANIQAH BINTI HAMIZAN</span>
         </div>
-        <div class="header__main">
+        <nav class="header__main">
           <ul class="header__links">
-            <li class="header__link-wrapper"><a href="./index.html" class="header__link">Home</a></li>
-            <li class="header__link-wrapper"><a href="./index.html#about" class="header__link">Profile &amp; SDG</a></li>
-            <li class="header__link-wrapper"><a href="./index.html#labs" class="header__link">Labs</a></li>
-            <li class="header__link-wrapper"><a href="./index.html#projects" class="header__link">Projects</a></li>
-            <li class="header__link-wrapper"><a href="./index.html#reflection" class="header__link">Journey Reflection</a></li>
+            <li><a href="#" class="header__link header__link--active">Home</a></li>
+            <li><a href="#about" class="header__link">Profile &amp; SDG</a></li>
+            <li><a href="#labs" class="header__link">Labs</a></li>
+            <li><a href="#projects" class="header__link">Projects</a></li>
+            <li><a href="#reflection" class="header__link">Reflection</a></li>
+            <li><a href="#resources" class="header__link">Resources</a></li>
           </ul>
-        </div>
+        </nav>
       </div>
     </header>
 
-    <!-- 🏠 HERO SECTION -->
+    <!-- 🏠 HOME HERO SECTION -->
     <section class="home-hero">
       <div class="home-hero__content">
         <h1 class="heading-primary">Hi, My name is Aniqah</h1>
         <div class="home-hero__info">
           <p class="text-primary">
-           Hi! I am a Year 2 Software Engineering student who loves building impactful mobile experiences. For this course, I developed TrailFinder, a smart companion app tailored for hiking enthusiasts. Built with an offline-first approach, the app helps users locate the best nature trails nearby, streams active live weather alerts for safety, tracks hiking telemetry via device sensors, and allows the community to share real-time trail updates. It has been an amazing journey blending technology with outdoor adventure to support sustainable land preservation!</p>
+            Hi! I am a Year 2 Software Engineering student who loves building impactful mobile experiences. For this course, I developed TrailFinder, a smart companion app tailored for hiking enthusiasts. Built with an offline-first approach, the app helps users locate the best nature trails nearby, streams active live weather alerts for safety, tracks hiking telemetry via device sensors, and allows the community to share real-time trail updates. It has been an amazing journey blending technology with outdoor adventure to support sustainable land preservation!
+          </p>
         </div>
         <div class="home-hero__cta">
           <a href="#about" class="btn btn--bg">Explore Portfolio</a>
@@ -51,131 +376,144 @@
       </div>
     </section>
 
-    <!-- 👤 ELEMENT 1: STUDENT PROFILE & SDG -->
+    <!-- 👤 STICKY NAV TARGET 1: PROFILE & SDG & SKILLS -->
     <section id="about" class="about sec-pad">
       <div class="main-container">
-        <h2 class="heading heading-sec heading-sec__mb-med">
-          <span class="heading-sec__main">1. Student Profile &amp; Framework Frameworks</span>
+        <h2 class="heading-sec">
+          <span class="heading-sec__main">1. Student Profile &amp; SDG Framework</span>
+          <span class="heading-sec__sub">Academic identity details and core sustainable computing goals alignment.</span>
         </h2>
+        
         <div class="about__content">
           <div class="about__content-main">
             <h3 class="about__content-title">Academic Background</h3>
-            <div class="about__content-details" style="font-size: 1.6rem; color: #666; line-height: 1.8;">
+            <div class="about__content-details">
               <p><strong>Name:</strong> NUR ANIQAH BINTI HAMIZAN</p>
               <p><strong>Matric No:</strong> A212764</p>
-              <p><strong>Programme:</strong> Bachelor of Software Engineering </p>
+              <p><strong>Programme:</strong> Bachelor of Software Engineering</p>
               <p><strong>Instructor:</strong> Dr. Nazatul</p>
-              <p>
+              <p style="margin-top: 2rem; color: var(--text-main);">
                 <strong>Short Introduction &amp; Learning Goals:</strong> I am an aspiring Android developer focused on mastering declarative UI states and local-cloud data handling architectures. My goal for this course was to transition from theoretical programming into producing industry-ready, robust native applications that solve real-world user problems cleanly.
               </p>
-              <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;" />
-              <p style="background: #f0fdf4; padding: 15px; border-left: 5px solid #16a34a;">
-                🌍 <strong>Chosen SDG: Goal 15 - Life on Land</strong><br />
-                <em>One-Line Statement:</em> Empowering terrestrial conservation and eco-hiking transparency by leveraging automated geo-tracking and offline localized weather sync for safer, eco-conscious trail exploration.
-              </p>
+              
+              <div class="sdg-badge-container">
+                <span style="font-size: 1.8rem; font-weight: 700; color: var(--primary-dark); display: block; margin-bottom: 0.5rem;">🌍 Chosen SDG: Goal 15 - Life on Land</span>
+                <span style="font-style: italic; color: var(--text-main); font-size: 1.5rem;">One-Line Statement:</span> Empowering terrestrial conservation and eco-hiking transparency by leveraging automated geo-tracking and offline localized weather sync for safer, eco-conscious trail exploration.
+              </div>
             </div>
           </div>
           
-          <!-- 🛠️ ELEMENT 5: SKILLS & TECH STACK -->
+          <!-- 🛠️ CORE SKILLS SUB-CONTAINER -->
           <div class="about__content-skills">
-            <h3 class="about__content-title">5. Core Tech Stack (Confident)</h3>
+            <h3 class="about__content-title">Skills &amp; Tech Stack</h3>
+            <p style="font-size: 1.4rem; color: var(--text-muted); margin-bottom: 2rem;">Validated engineering stacks confidently manipulated across labs and active project codebases:</p>
             <div class="skills">
               <div class="skills__skill">Kotlin Native</div>
               <div class="skills__skill">Jetpack Compose UI</div>
               <div class="skills__skill">Room Database (SQLite)</div>
               <div class="skills__skill">Retrofit REST Client</div>
-              <div class="skills__skill">Firebase Cloud Database</div>
+              <div class="skills__skill">Firebase Cloud Firestore</div>
               <div class="skills__skill">Android GPS Sensors</div>
               <div class="skills__skill">State Management</div>
+              <div class="skills__skill">Osmdroid Mapping</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-   <!-- 🧪 ELEMENT 2: LAB SUBMISSIONS (LAB 1 - 5) -->
-    <section id="labs" class="projects sec-pad" style="background: #fafafa;">
+    <!-- 🧪 STICKY NAV TARGET 2: LAB SUBMISSIONS -->
+    <section id="labs" class="projects sec-pad" style="background: #f1f5f9;">
       <div class="main-container">
-        <h2 class="heading heading-sec heading-sec__mb-bg">
+        <h2 class="heading-sec">
           <span class="heading-sec__main">2. Laboratory Submissions</span>
-          <span class="heading-sec__sub">Demonstrating step-by-step technological builds with embedded video logs.</span>
+          <span class="heading-sec__sub">Demonstrating incremental technical proficiency and step-by-step technological builds.</span>
         </h2>
 
         <div class="projects__content">
           
-          <!-- 📹 LAB 1 -->
+          <!-- LAB 1 CARD -->
           <div class="projects__row">
-            <div class="projects__row-img-cont" style="position: relative; padding-bottom: 30%; height: 0; overflow: hidden; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.15);">
-              <!-- 💡 TIPS: Ganti ID 'SXG-pYLBG2M' dengan ID video YouTube Lab 1 you kalau berbeza -->
-              <iframe src="https://www.youtube.com/embed/SXG-pYLBG2M" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+            <div class="projects__row-img-cont">
+              <iframe src="https://www.youtube.com/embed/SXG-pYLBG2M" allowfullscreen></iframe>
             </div>
             <div class="projects__row-content">
               <h3 class="projects__row-content-title">Lab 1 — UI Foundations</h3>
               <p class="projects__row-content-desc">
                 <strong>Description:</strong> Orchestrated the initial Android Studio IDE workspace, configured native Android Gradle build scripts, and mapped baseline layout view parameters.<br/><br/>
-                <strong>Reflection:</strong> Gained core proficiency in working with SDK environment variables and understanding declarative composition patterns.
+                <strong>Reflection:</strong> Gained core proficiency in working with SDK environment variables and understanding declarative composition patterns. This laid the foundation for developing complex, custom layout boundaries.
               </p>
-              <a href="https://youtu.be/SXG-pYLBG2M" target="_blank" class="btn btn--med btn--theme dynamicBgClr">Open in YouTube</a>
+              <div class="project-button-group">
+                <a href="https://youtu.be/SXG-pYLBG2M" target="_blank" class="btn btn--med">Open in YouTube</a>
+              </div>
             </div>
           </div>
 
-          <!-- 📹 LAB 2 -->
+          <!-- LAB 2 CARD -->
           <div class="projects__row">
-            <div class="projects__row-img-cont" style="position: relative; padding-bottom: 30%; height: 0; overflow: hidden; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.15);">
-              <iframe src="https://www.youtube.com/embed/hrNj46wS87k" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+            <div class="projects__row-img-cont">
+              <iframe src="https://www.youtube.com/embed/hrNj46wS87k" allowfullscreen></iframe>
             </div>
             <div class="projects__row-content">
               <h3 class="projects__row-content-title">Lab 2 — Interaction &amp; State</h3>
               <p class="projects__row-content-desc">
                 <strong>Description:</strong> Implemented interactive state holders, text fields, and localized event handling parameters that instantly mutate user screen items dynamically.<br/><br/>
-                <strong>Reflection:</strong> Learned how composition lifecycles remember structural data variables during native runtime UI state shifts.
+                <strong>Reflection:</strong> Learned how composition lifecycles remember structural data variables during native runtime UI state shifts. Grasping mutable state functions unlocked the capability to capture active live user inputs seamlessly.
               </p>
-              <a href="https://youtu.be/hrNj46wS87k" target="_blank" class="btn btn--med btn--theme dynamicBgClr">Open in YouTube</a>
+              <div class="project-button-group">
+                <a href="https://youtu.be/hrNj46wS87k" target="_blank" class="btn btn--med">Open in YouTube</a>
+              </div>
             </div>
           </div>
 
-          <!-- 📹 LAB 3 -->
+          <!-- LAB 3 CARD -->
           <div class="projects__row">
-            <div class="projects__row-img-cont" style="position: relative; padding-bottom: 30%; height: 0; overflow: hidden; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.15);">
-              <iframe src="https://www.youtube.com/embed/1GG_vvqb8SM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+            <div class="projects__row-img-cont">
+              <iframe src="https://www.youtube.com/embed/1GG_vvqb8SM" allowfullscreen></iframe>
             </div>
             <div class="projects__row-content">
               <h3 class="projects__row-content-title">Lab 3 — Material Design Principles</h3>
               <p class="projects__row-content-desc">
                 <strong>Description:</strong> Styled application elements utilizing structured typography configurations, uniform spacing schemas, custom modifiers, and card architectures.<br/><br/>
-                <strong>Reflection:</strong> Understood the core design guidelines to build highly scannable, standardized, and user-friendly mobile application interfaces.
+                <strong>Reflection:</strong> Understood the core design guidelines to build highly scannable, standardized, and user-friendly mobile application interfaces. Material 3 scaffolding elevated the aesthetic and ergonomic appeal of my components.
               </p>
-              <a href="https://youtu.be/1GG_vvqb8SM" target="_blank" class="btn btn--med btn--theme dynamicBgClr">Open in YouTube</a>
+              <div class="project-button-group">
+                <a href="https://youtu.be/1GG_vvqb8SM" target="_blank" class="btn btn--med">Open in YouTube</a>
+              </div>
             </div>
           </div>
 
-          <!-- 📹 LAB 4 -->
+          <!-- LAB 4 CARD -->
           <div class="projects__row">
-            <div class="projects__row-img-cont" style="position: relative; padding-bottom: 30%; height: 0; overflow: hidden; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.15);">
-              <iframe src="https://www.youtube.com/embed/Tnw3-r_BraM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+            <div class="projects__row-img-cont">
+              <iframe src="https://www.youtube.com/embed/Tnw3-r_BraM" allowfullscreen></iframe>
             </div>
             <div class="projects__row-content">
               <h3 class="projects__row-content-title">Lab 4 — NavHost Architecture</h3>
               <p class="projects__row-content-desc">
                 <strong>Description:</strong> Built custom route state graphs using the Jetpack NavHost framework to establish modular screen deep-linking and argument passing channels.<br/><br/>
-                <strong>Reflection:</strong> Mastered decoupling screen hierarchies to transfer live structured parameters between view controllers cleanly.
+                <strong>Reflection:</strong> Mastered decoupling screen hierarchies to transfer live structured parameters between view controllers cleanly. This allowed multi-screen data scaling without mutating global navigation scopes unexpectedly.
               </p>
-              <a href="https://youtu.be/Tnw3-r_BraM" target="_blank" class="btn btn--med btn--theme dynamicBgClr">Open in YouTube</a>
+              <div class="project-button-group">
+                <a href="https://youtu.be/Tnw3-r_BraM" target="_blank" class="btn btn--med">Open in YouTube</a>
+              </div>
             </div>
           </div>
 
-          <!-- 📹 LAB 5 -->
+          <!-- LAB 5 CARD -->
           <div class="projects__row">
-            <div class="projects__row-img-cont" style="position: relative; padding-bottom: 30%; height: 0; overflow: hidden; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.15);">
-              <iframe src="https://www.youtube.com/embed/f2KHhvMHVmM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+            <div class="projects__row-img-cont">
+              <iframe src="https://www.youtube.com/embed/f2KHhvMHVmM" allowfullscreen></iframe>
             </div>
             <div class="projects__row-content">
               <h3 class="projects__row-content-title">Lab 5 — Local Room Data Storage</h3>
               <p class="projects__row-content-desc">
                 <strong>Description:</strong> Integrated structured local edge persistence utilizing SQLite Room Data Access Objects (DAO), structural entity columns, and localized data models.<br/><br/>
-                <strong>Reflection:</strong> Learned asynchronous query background executions to prevent rendering thread blocks during persistent memory operations.
+                <strong>Reflection:</strong> Learned asynchronous query background executions to prevent rendering thread blocks during persistent memory operations. This offline persistence engine represents the vital bedrock of our data layer ecosystem.
               </p>
-              <a href="https://youtu.be/f2KHhvMHVmM" target="_blank" class="btn btn--med btn--theme dynamicBgClr">Open in YouTube</a>
+              <div class="project-button-group">
+                <a href="https://youtu.be/f2KHhvMHVmM" target="_blank" class="btn btn--med">Open in YouTube</a>
+              </div>
             </div>
           </div>
 
@@ -183,81 +521,78 @@
       </div>
     </section>
 
-    <!-- 🚀 ELEMENT 3: PROJECT SUBMISSIONS -->
+    <!-- 🚀 STICKY NAV TARGET 3: PROJECT MILESTONES (Perfected Formatting) -->
     <section id="projects" class="projects sec-pad">
       <div class="main-container">
-        <h2 class="heading heading-sec heading-sec__mb-bg">
+        <h2 class="heading-sec">
           <span class="heading-sec__main">3. Course Project Milestones</span>
-          <span class="heading-sec__sub">Comprehensive full-stack system architectures with direct streamable presentation logs.</span>
+          <span class="heading-sec__sub">Comprehensive full-stack systems engineering architectures showcasing incremental software maturation.</span>
         </h2>
+        
         <div class="projects__content">
           
-         <!-- 📹 PROJECT 1 -->
+          <!-- PROJECT 1 CARD -->
           <div class="projects__row">
-            <div class="projects__row-img-cont" style="position: relative; padding-bottom: 30%; height: 0; overflow: hidden; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.15);">
-              <iframe src="https://www.youtube.com/embed/zKoairVUiCI" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+            <div class="projects__row-img-cont">
+              <iframe src="https://www.youtube.com/embed/zKoairVUiCI" allowfullscreen></iframe>
             </div>
             <div class="projects__row-content">
               <h3 class="projects__row-content-title">Project 1: Navigational Flow &amp; Feature Blueprint (Lab 4 Extension)</h3>
               
-              <div class="projects__row-content-desc" style="font-size: 1.5rem; line-height: 1.7; color: #444;">
-                <p style="margin-bottom: 12px;">
+              <div class="projects__row-content-desc">
+                <p style="margin-bottom: 15px;">
                   🔴 <strong>Problem Statement:</strong> Eco-hikers frequently encounter uncoordinated trail information and disjointed interface tracking layouts. Without a streamlined, state-hoisted design blueprint, shifting between weather statuses, active maps, and community feeds leads to high cognitive load, data fragmentation, and broken mobile navigation states.
                 </p>
-                
-                <p style="margin-bottom: 12px;">
+                <p style="margin-bottom: 15px;">
                   ✨ <strong>Working Features Added:</strong>
                 </p>
-                <ul style="margin-left: 20px; margin-bottom: 12px; list-style-type: disc;">
+                <ul style="margin-left: 20px; margin-bottom: 15px; list-style-type: disc;">
                   <li><strong>7-Screen Interactive UI Architecture:</strong> Built a complete declarative user flow using Material 3 Scaffold layouts, TopBar actions, and interactive UI components.</li>
                   <li><strong>Jetpack NavHost Route Graph:</strong> Configured a centralized navigation graph mapping clean, typed transitions across all 7 essential system screens.</li>
                   <li><strong>State-Hoisted Argument Passing:</strong> Implemented structured route parameter bundles to transfer localized trail entities seamlessly from the home list to the detail views.</li>
                   <li><strong>Mock Data Pipeline Blueprint:</strong> Established baseline object models and collection lists to act as the interface foundation for future full-stack API integration.</li>
                 </ul>
-                
-                <p style="margin-bottom: 12px;">
+                <p>
                   🧠 <strong>Lessons Learned:</strong> Gained deep proficiency in decoupling complex application screens by organizing uniform state-hoisting boundaries. Managing global UI state updates across nested navigation graphs proved essential in eliminating state mutation mismatches and preventing navigation backstack overhead leaks.
                 </p>
               </div>
-
-              <div style="margin-top: 25px;">
-                <a href="https://youtu.be/zKoairVUiCI" target="_blank" class="btn btn--med btn--theme dynamicBgClr" style="padding: 1rem 2rem; font-size: 1.3rem;">Open in YouTube</a>
-                <a href="https://github.com/aniqaahh/A212764_Aniqah_DrNazatul_Project1" target="_blank" class="btn btn--med btn--theme dynamicBgClr" style="padding: 1rem 2rem; font-size: 1.3rem; background: #333;">GitHub Repo</a>
+              
+              <div class="project-button-group">
+                <a href="https://youtu.be/zKoairVUiCI" target="_blank" class="btn btn--med">Open in YouTube</a>
+                <a href="https://github.com/aniqaahh/A212764_Aniqah_DrNazatul_Project1" target="_blank" class="btn btn--med" style="background: #334155;">View on GitHub</a>
               </div>
             </div>
           </div>
 
-         <!-- 📹 PROJECT 2 (THE MAIN PIECE) -->
+          <!-- PROJECT 2 CARD -->
           <div class="projects__row">
-            <div class="projects__row-img-cont" style="position: relative; padding-bottom: 30%; height: 0; overflow: hidden; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.15);">
-              <iframe src="https://www.youtube.com/embed/iTm3rly94O4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+            <div class="projects__row-img-cont">
+              <iframe src="https://www.youtube.com/embed/iTm3rly94O4" allowfullscreen></iframe>
             </div>
             <div class="projects__row-content">
               <h3 class="projects__row-content-title">Project 2: Sensor-Aware Full-Stack Architecture (Lab 5 Extension)</h3>
               
-              <div class="projects__row-content-desc" style="font-size: 1.5rem; line-height: 1.7; color: #444;">
-                <p style="margin-bottom: 12px;">
+              <div class="projects__row-content-desc">
+                <p style="margin-bottom: 15px;">
                   🔴 <strong>Problem Statement:</strong> Outdoor trail trackers break essential functionalities when moving into deep forest terrains due to the total loss of live network connectivity. Without local caching fallbacks, active remote database synchronization, and integrated environmental monitoring, hikers are exposed to navigational hazards and unrecorded active session data.
                 </p>
-                
-                <p style="margin-bottom: 12px;">
+                <p style="margin-bottom: 15px;">
                   ✨ <strong>Working Features Added:</strong>
                 </p>
-                <ul style="margin-left: 20px; margin-bottom: 12px; list-style-type: disc;">
+                <ul style="margin-left: 20px; margin-bottom: 15px; list-style-type: disc;">
                   <li><strong>Dynamic Network Loading:</strong> Asynchronously queries and parses real-time trail parameters from MockAPI endpoints.</li>
                   <li><strong>Hardware Location Tracking:</strong> Integrates an active Android GPS Sensor callback stream to overlay real-time coordinates onto an interactive Osmdroid map layout.</li>
                   <li><strong>Live Safety Telemetry:</strong> Connects to the Open-Meteo REST API using a Retrofit service to fetch localized climate alert metrics.</li>
                   <li><strong>Multi-Tier Hybrid Caching:</strong> Automatically commits hiking logs to a local SQLite Room Database for offline durability, paired with an automated multi-device cloud push to Firebase Firestore via live snapshot listener streams.</li>
                 </ul>
-                
-                <p style="margin-bottom: 12px;">
+                <p>
                   🧠 <strong>Lessons Learned:</strong> Mastered the implementation of decoupled architectural layers by resolving concurrency UI thread-locks. Wrapping hardware GPS emission loops inside asynchronous Coroutine flows, while concurrently managing active Firestore <code>addSnapshotListener</code> triggers, proved vital in maintaining fluid rendering states and preventing memory state overhead leaks.
                 </p>
               </div>
-
-              <div style="margin-top: 25px;">
-                <a href="https://youtu.be/iTm3rly94O4" target="_blank" class="btn btn--med btn--theme dynamicBgClr" style="padding: 1rem 2rem; font-size: 1.3rem;">Open in YouTube</a>
-                <a href="https://github.com/aniqaahh/A212764_Aniqah_DrNazatul_Project2" target="_blank" class="btn btn--med btn--theme dynamicBgClr" style="padding: 1rem 2rem; font-size: 1.3rem; background: #333;">GitHub Repo</a>
+              
+              <div class="project-button-group">
+                <a href="https://youtu.be/iTm3rly94O4" target="_blank" class="btn btn--med">Open in YouTube</a>
+                <a href="https://github.com/aniqaahh/A212764_Aniqah_DrNazatul_Project2" target="_blank" class="btn btn--med" style="background: #334155;">View on GitHub</a>
               </div>
             </div>
           </div>
@@ -266,73 +601,107 @@
       </div>
     </section>
 
-    <!-- 🧠 ELEMENT 4: REFLECTION & LEARNING JOURNEY -->
-    <section id="reflection" class="contact sec-pad dynamicBg" style="background: linear-gradient(to right, #584b7d, #3e355b); color: #fff;">
+    <!-- 🧠 STICKY NAV TARGET 4: REFLECTION & JOURNEY -->
+    <section id="reflection" class="sec-pad reflection-banner">
       <div class="main-container">
-        <h2 class="heading heading-sec heading-sec__mb-med">
-          <span class="heading-sec__main" style="color: #fff;">4. Learning Journey Reflection</span>
+        <h2 class="heading-sec">
+          <span class="heading-sec__main" style="color: var(--bg-white);">4. Learning Journey Reflection</span>
+          <span class="heading-sec__sub" style="color: rgba(241, 245, 249, 0.7);">A holistic retrospection of shifts in personal technical capabilities and code maturity.</span>
         </h2>
-        <div style="font-size: 1.7rem; line-height: 1.9; max-width: 80rem; margin: auto; text-align: justify;">
-          <p>
-            🚀 <strong>Evolution (From Lab 1 to Project 2):</strong> My engineering confidence shifted fundamentally. I began in Lab 1 by creating hardcoded UI assets. By the time I reached Project 2, I was independently architecting reactive Android software capable of mapping real-time geospatial configurations and caching multi-tier datasets.
-          </p>
-          <p style="margin-top: 15px;">
-            ⚠️ <strong>Technical Challenges Overcome:</strong> Handling thread-safety concurrency issues while mapping dynamic hardware location updates onto localized database streams represented a critical learning roadblock. I mitigated this by wrapping continuous GPS emission streams inside localized async background Coroutines.
-          </p>
-          <p style="margin-top: 15px;">
-            🌳 <strong>SDG Structural Impact:</strong> Developing this eco-hiking solution bridges digital infrastructure with active environmental safety frameworks (SDG 15). Providing data-driven mapping variables keeps community hikers informed, reducing accidents and promoting sustainable trail habits.
-          </p>
+        
+        <div class="reflection-box">
+          <div class="reflection-card">
+            <h4>🚀 Evolution (From Lab 1 to Project 2)</h4>
+            <p>My engineering confidence shifted fundamentally. I began in Lab 1 by creating hardcoded UI assets. By the time I reached Project 2, I was independently architecting reactive Android software capable of mapping real-time geospatial configurations and caching multi-tier datasets.</p>
+          </div>
+          <div class="reflection-card">
+            <h4>⚠️ Technical Challenges Overcome</h4>
+            <p>Handling thread-safety concurrency issues while mapping dynamic hardware location updates onto localized database streams represented a critical learning roadblock. I mitigated this by wrapping continuous GPS emission streams inside localized async background Coroutines, avoiding primary main thread freezes.</p>
+          </div>
+          <div class="reflection-card">
+            <h4>🌳 SDG Structural Impact</h4>
+            <p>Developing this eco-hiking solution bridges digital infrastructure with active environmental safety frameworks (SDG 15). Providing data-driven mapping variables keeps community hikers informed, reducing accidents and promoting sustainable trail habits.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 📚 ELEMENT 6: RESOURCES, LIBRARIES & AI ACKNOWLEDGEMENT -->
-    <section class="sec-pad" style="background: #eee;">
-      <div class="main-container" style="max-width: 90rem;">
-        <h3 class="about__content-title" style="text-align: center; font-size: 2.2rem; margin-bottom: 25px;">6. References &amp; Development Resources</h3>
-        <table style="width: 100%; border-collapse: collapse; font-size: 1.5rem; background: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-          <thead>
-            <tr style="background: #443e5c; color: white; text-align: left;">
-              <th style="padding: 12px;">Resource Type</th>
-              <th style="padding: 12px;">Component Name</th>
-              <th style="padding: 12px;">Application Utilization Purpose</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-bottom: 1px solid #ddd;">
-              <td style="padding: 12px; font-weight: bold;">Remote REST API</td>
-              <td style="padding: 12px;">Open-Meteo API &amp; MockAPI</td>
-              <td style="padding: 12px;">Fetched real-time weather data telemetry and initial dynamic trail records.</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #ddd;">
-              <td style="padding: 12px; font-weight: bold;">Mapping Framework</td>
-              <td style="padding: 12px;">Osmdroid Library</td>
-              <td style="padding: 12px;">Rendered offline open-source topographic map engine screens.</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #ddd;">
-              <td style="padding: 12px; font-weight: bold;">Backend Cloud Database</td>
-              <td style="padding: 12px;">Firebase Realtime Database</td>
-              <td style="padding: 12px;">Handled live multi-device online synchronization of user ratings and reviews.</td>
-            </tr>
-            <tr>
-              <td style="padding: 12px; font-weight: bold;">AI Assistance Statement</td>
-              <td style="padding: 12px;">Large Language Model (Gemini)</td>
-              <td style="padding: 12px;">Utilized code generation for CSS layout structures and structural validation of repository HTML blocks.</td>
-            </tr>
-          </tbody>
-        </table>
+    <!-- 📚 STICKY NAV TARGET 5: RESOURCES & REFERENCES (Corrected to Firestore) -->
+    <section id="resources" class="sec-pad" style="background: var(--bg-light);">
+      <div class="main-container">
+        <h2 class="heading-sec">
+          <span class="heading-sec__main">5. References &amp; Resources</span>
+          <span class="heading-sec__sub">Transparent disclosure of underlying production libraries, remote endpoints, and engineering assistance APIs.</span>
+        </h2>
+
+        <div class="table-wrapper">
+          <table class="resource-table">
+            <thead>
+              <tr>
+                <th>Resource Type</th>
+                <th>Component Name</th>
+                <th>Application Utilization Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight: 700; color: var(--primary-dark);">Remote REST API</td>
+                <td>Open-Meteo API &amp; MockAPI</td>
+                <td>Fetched real-time weather data telemetry parameters and initial dynamic trail dataset structural records.</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700; color: var(--primary-dark);">Mapping Framework</td>
+                <td>Osmdroid Library</td>
+                <td>Rendered functional, hardware location-aware open-source topographic map engine layers inside the view graph.</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700; color: var(--primary-dark);">Backend Cloud Database</td>
+                <td>Firebase Cloud Firestore</td>
+                <td>Handled asynchronous live synchronization of user community reviews via structural remote collection pushes.</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700; color: var(--primary-dark);">AI Assistance Statement</td>
+                <td>Large Language Model (Gemini)</td>
+                <td>Utilized code generation for structural CSS styling parameters, README organization templates, and validation of repository HTML layouts.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
-    <!-- 🗺️ FOOTER -->
+    <!-- 🗺️ ACCESSIBLE FOOTER (Requirement: Name, Matric, and Year Integrated) -->
     <footer class="main-footer">
-      <div class="main-container">
-        <div class="main-footer__lower">
-          &copy; Copyright 2026. Built using Dopefolio by Ram Maheshwari. Adapted for Academic e-Portfolio Evaluation.
+      <div class="main-container main-footer__content">
+        <div class="main-footer__credit">
+          &copy; Copyright 2026. NUR ANIQAH BINTI HAMIZAN (A212764). All Rights Reserved.
+        </div>
+        <div style="font-size: 1.3rem; color: rgba(241, 245, 249, 0.4);">
+          Course Evaluation Dashboard | Adapted with Dopefolio Infrastructure.
         </div>
       </div>
     </footer>
 
-    <script src="./index.js"></script>
+    <!-- Pure Local Vanilla Navigation Smooth Behavior Hook -->
+    <script>
+      document.querySelectorAll('.header__link').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href');
+          if(targetId.startsWith('#')) {
+            e.preventDefault();
+            document.querySelectorAll('.header__link').forEach(l => l.classList.remove('header__link--active'));
+            this.classList.add('header__link--active');
+            
+            const element = document.querySelector(targetId === '#' ? 'body' : targetId);
+            if(element) {
+              window.scrollTo({
+                top: element.offsetTop - 80,
+                behavior: 'smooth'
+              });
+            }
+          }
+        });
+      });
+    </script>
   </body>
 </html>
