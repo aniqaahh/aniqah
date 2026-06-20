@@ -539,21 +539,23 @@
             <div class="projects__row-content">
               <h3 class="projects__row-content-title">Project 1: Navigational Flow &amp; Feature Blueprint (Lab 4 Extension)</h3>
               
-              <div class="projects__row-content-desc">
-                <p style="margin-bottom: 15px;">
-                  🔴 <strong>Problem Statement:</strong> Eco-hikers frequently encounter uncoordinated trail information and disjointed interface tracking layouts. Without a streamlined, state-hoisted design blueprint, shifting between weather statuses, active maps, and community feeds leads to high cognitive load, data fragmentation, and broken mobile navigation states.
+              <div class="projects__row-content-desc" style="font-size: 1.5rem; line-height: 1.7; color: #444;">
+                <p style="margin-bottom: 12px;">
+                  🔴 <strong>Problem Statement:</strong> Hikers often get confused when an app has messy layouts and disorganized trail info. Without a clear interface blueprint and proper navigation planning, switching between maps, weather screens, and user feeds can feel clunky, lose data, or break the app's back button behavior.
                 </p>
-                <p style="margin-bottom: 15px;">
+                
+                <p style="margin-bottom: 12px;">
                   ✨ <strong>Working Features Added:</strong>
                 </p>
-                <ul style="margin-left: 20px; margin-bottom: 15px; list-style-type: disc;">
-                  <li><strong>7-Screen Interactive UI Architecture:</strong> Built a complete declarative user flow using Material 3 Scaffold layouts, TopBar actions, and interactive UI components.</li>
-                  <li><strong>Jetpack NavHost Route Graph:</strong> Configured a centralized navigation graph mapping clean, typed transitions across all 7 essential system screens.</li>
-                  <li><strong>State-Hoisted Argument Passing:</strong> Implemented structured route parameter bundles to transfer localized trail entities seamlessly from the home list to the detail views.</li>
-                  <li><strong>Mock Data Pipeline Blueprint:</strong> Established baseline object models and collection lists to act as the interface foundation for future full-stack API integration.</li>
+                <ul style="margin-left: 20px; margin-bottom: 12px; list-style-type: disc;">
+                  <li><strong>7-Screen UI Architecture:</strong> Created the complete visual flow of the app using standard Material 3 Scaffold layouts, custom TopBars, and interactive buttons.</li>
+                  <li><strong>Jetpack NavHost Routing:</strong> Set up a centralized navigation graph to manage clean, error-free transitions across all 7 main screens.</li>
+                  <li><strong>Data Passing Between Screens:</strong> Implemented safe argument bundles to pass trail info smoothly when a user clicks a item on the home list to open the detail view.</li>
+                  <li><strong>Mock Data Setup:</strong> Built hardcoded object models and list arrays to act as a placeholder framework before linking up the live database later.</li>
                 </ul>
-                <p>
-                  🧠 <strong>Lessons Learned:</strong> Gained deep proficiency in decoupling complex application screens by organizing uniform state-hoisting boundaries. Managing global UI state updates across nested navigation graphs proved essential in eliminating state mutation mismatches and preventing navigation backstack overhead leaks.
+                
+                <p style="margin-bottom: 12px;">
+                  🧠 <strong>Lessons Learned:</strong> I learned how to properly structure multi-screen apps by separating layout designs from state logic using State Hoisting. Managing screen destinations within a single navigation graph also taught me how to keep the app's backstack clean, ensuring users don't face lag or broken navigation paths when pressing the back button.
                 </p>
               </div>
               
@@ -572,21 +574,23 @@
             <div class="projects__row-content">
               <h3 class="projects__row-content-title">Project 2: Sensor-Aware Full-Stack Architecture (Lab 5 Extension)</h3>
               
-              <div class="projects__row-content-desc">
-                <p style="margin-bottom: 15px;">
-                  🔴 <strong>Problem Statement:</strong> Outdoor trail trackers break essential functionalities when moving into deep forest terrains due to the total loss of live network connectivity. Without local caching fallbacks, active remote database synchronization, and integrated environmental monitoring, hikers are exposed to navigational hazards and unrecorded active session data.
+              <div class="projects__row-content-desc" style="font-size: 1.5rem; line-height: 1.7; color: #444;">
+                <p style="margin-bottom: 12px;">
+                  🔴 <strong>Problem Statement:</strong> Most hiking apps completely lose functionality or crash inside deep forest terrains due to zero network coverage. Without offline data caching and live environmental alerts, hikers are exposed to navigational risks, and their tracking logs can easily be lost.
                 </p>
-                <p style="margin-bottom: 15px;">
+                
+                <p style="margin-bottom: 12px;">
                   ✨ <strong>Working Features Added:</strong>
                 </p>
-                <ul style="margin-left: 20px; margin-bottom: 15px; list-style-type: disc;">
-                  <li><strong>Dynamic Network Loading:</strong> Asynchronously queries and parses real-time trail parameters from MockAPI endpoints.</li>
-                  <li><strong>Hardware Location Tracking:</strong> Integrates an active Android GPS Sensor callback stream to overlay real-time coordinates onto an interactive Osmdroid map layout.</li>
-                  <li><strong>Live Safety Telemetry:</strong> Connects to the Open-Meteo REST API using a Retrofit service to fetch localized climate alert metrics.</li>
-                  <li><strong>Multi-Tier Hybrid Caching:</strong> Automatically commits hiking logs to a local SQLite Room Database for offline durability, paired with an automated multi-device cloud push to Firebase Firestore via live snapshot listener streams.</li>
+                <ul style="margin-left: 20px; margin-bottom: 12px; list-style-type: disc;">
+                  <li><strong>API Data Fetching:</strong> Used Retrofit to asynchronously pull dynamic trail listings from a MockAPI endpoint into the app.</li>
+                  <li><strong>Live GPS &amp; Mapping:</strong> Integrated the phone's native GPS sensor with Osmdroid to display the hiker's real-time position on an interactive map.</li>
+                  <li><strong>Real-Time Weather Alerts:</strong> Connected to the Open-Meteo REST API to fetch up-to-date weather conditions at specific trail locations for safety.</li>
+                  <li><strong>Hybrid Offline-Online Caching:</strong> Implemented Room Database to save reviews locally when offline, which automatically syncs to Firebase Firestore once internet access is restored.</li>
                 </ul>
-                <p>
-                  🧠 <strong>Lessons Learned:</strong> Mastered the implementation of decoupled architectural layers by resolving concurrency UI thread-locks. Wrapping hardware GPS emission loops inside asynchronous Coroutine flows, while concurrently managing active Firestore <code>addSnapshotListener</code> triggers, proved vital in maintaining fluid rendering states and preventing memory state overhead leaks.
+                
+                <p style="margin-bottom: 12px;">
+                  🧠 <strong>Lessons Learned:</strong> I learned how to manage multiple data flows simultaneously using Kotlin Coroutines so that the UI stays smooth and doesn't freeze while fetching background GPS data. I also gained a solid understanding of combining local storage (Room) with cloud storage (Firebase) to keep user data reliable under weak network conditions.
                 </p>
               </div>
               
